@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+  /* 深色模式：在首次绘制之前定下主题，避免闪一下白 */
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem('btmats-theme'); } catch (e) {}
+    if (saved !== 'light' && saved !== 'dark') {
+      saved = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+    }
+    document.documentElement.setAttribute('data-theme', saved);
+  })();
+</script>
+<title>btmats</title>
+<meta name="description" content="写代码、读书，和一些没用的实验">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#FAF9F6">
+<link rel="canonical" href="https://btmats.github.io/">
+<meta property="og:title" content="btmats">
+<meta property="og:description" content="写代码、读书，和一些没用的实验">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="btmats">
+<meta property="og:url" content="https://btmats.github.io/">
+
+<link rel="preconnect" href="https://fonts.googleapis.cn" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.cn/css2?family=EB+Garamond:ital,wght@0,400;0,500&amp;family=IBM+Plex+Sans:wght@400;500&amp;family=Noto+Sans+SC:wght@400&amp;family=Noto+Serif+SC:wght@400;500&amp;display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.cn/css2?family=EB+Garamond:ital,wght@0,400;0,500&amp;family=IBM+Plex+Sans:wght@400;500&amp;family=Noto+Sans+SC:wght@400&amp;family=Noto+Serif+SC:wght@400;500&amp;display=swap"></noscript>
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/style.css">
+<script>if(!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)){document.documentElement.classList.add('js-reveal')}</script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body class="is-cover">
+  
+    
+<div class="cover">
+  <header class="cover__bar">
+    <p class="cover__meta">
+      <span class="cover__mark" aria-hidden="true"></span>个人博客
+      <span class="cover__sep" aria-hidden="true">·</span>
+      <span>EST. 2026</span>
+    </p>
+    <button class="theme-toggle" type="button" data-theme-toggle aria-label="切换到深色" title="切换到深色">
+  <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">
+    <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M13.4 9.7A5.9 5.9 0 0 1 6.3 2.6 5.9 5.9 0 1 0 13.4 9.7Z"/></svg>
+  </span>
+  <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">
+    <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><circle cx="8" cy="8" r="3.1"/><path d="M8 1.1v1.7M8 13.2v1.7M1.1 8h1.7M13.2 8h1.7M3.2 3.2l1.2 1.2M11.6 11.6l1.2 1.2M12.8 3.2l-1.2 1.2M4.4 11.6l-1.2 1.2"/></svg>
+  </span>
+</button>
+
+  </header>
+
+  <main class="cover__main">
+    <h1 class="cover__name">btmats</h1>
+    <div class="cover__rule" aria-hidden="true"></div>
+    <p class="cover__tagline">写代码、读书，和一些没用的实验</p>
+    <a class="cover__enter" href="/blog/">
+      <span class="cover__enter-label">进入博客</span>
+      <span class="cover__enter-arrow" aria-hidden="true">→</span>
+    </a>
+  </main>
+
+  <footer class="cover__foot">
+    <span>&copy; 2026 btmats</span>
+    <span>共 1 篇文章</span>
+  </footer>
+</div>
+
+  
+  <script src="/js/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+/* ============================================================
+   设计变量 —— 全站唯一的取值来源
+   换肤、改字号、改留白都只动这个文件；style.css 只引用变量
+   深浅色：同一套变量，两组取值（见下方 [data-theme="dark"]）
+   ============================================================ */
+:root {
+  /* ── 色彩 · 9 个 ─────────────────────────────────────── */
+  --c-paper: #FAF9F6;           /* 纸白：全站背景 */
+  --c-ink: #1C1B19;             /* 墨黑：标题、正文、导航选中 */
+  --c-gray-700: #6E6A63;        /* 暖灰 700：摘要、日期、图注 */
+  --c-gray-400: #98938A;        /* 暖灰 400：标签、序号、辅助信息 */
+  --c-line: #E6E2D9;            /* 暖灰线：全部 1px 细线 */
+  --c-paper-tint: #F3F1EB;      /* 纸灰：仅代码块与行内代码 */
+  --c-terracotta: #B2634C;      /* 陶土：全站唯一强调色 */
+  --c-terracotta-soft: #C98D74; /* 陶土淡：细线过渡 */
+  --c-selection: rgba(178, 99, 76, 0.10); /* 陶土 10%：文本选中 */
+
+  /* ── 字体 · 4 组（中英各一衬线一无衬线）───────────────── */
+  /* 中英分开写：西文用带性格的衬线/无衬线，中文落到思源，再兜底系统字体。
+     通用族名（serif / sans-serif）只能放在合成变量的末尾，
+     否则它会先命中，后面的中文字体全部失效。 */
+  --f-serif-latin: "EB Garamond", "Times New Roman", "Georgia";
+  --f-serif-cjk: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", "SimSun";
+  --f-sans-latin: "IBM Plex Sans", "Helvetica Neue", "Arial";
+  --f-sans-cjk: "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei";
+  --f-serif: var(--f-serif-latin), var(--f-serif-cjk), serif;
+  --f-sans: var(--f-sans-latin), var(--f-sans-cjk), sans-serif;
+  --f-mono: ui-monospace, "JetBrains Mono", "Cascadia Mono", Consolas, "SFMono-Regular", monospace;
+
+  /* ── 字号 · 桌面 10 档 ───────────────────────────────── */
+  --fs-display: 30px;   /* 博客名 */
+  --fs-h1: 40px;        /* 文章标题 */
+  --fs-h2: 24px;        /* 小节标题 */
+  --fs-h3: 19px;        /* 小标题 / 上下篇标题 */
+  --fs-list: 21px;      /* 列表条目标题 */
+  --fs-quote: 20px;     /* 引用 */
+  --fs-body: 17.5px;    /* 正文 */
+  --fs-lead: 15px;      /* 摘要 */
+  --fs-meta: 13px;      /* 元信息 / 日期 / 页脚 */
+  --fs-tag: 12.5px;     /* 标签 / 图注 / 右侧小字 */
+
+  /* ── 行高 · 6 档 ─────────────────────────────────────── */
+  --lh-display: 1.30;
+  --lh-h1: 1.35;
+  --lh-h2: 1.50;
+  --lh-h3: 1.60;
+  --lh-quote: 1.75;
+  --lh-body: 1.90;
+  --lh-lead: 1.70;      /* 摘要 15/1.70，见 §3.2 */
+
+  /* ── 间距 · 8px 基准 11 档 ───────────────────────────── */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --sp-8: 64px;
+  --sp-9: 96px;
+  --sp-10: 128px;
+  --sp-11: 160px;
+
+  /* 组件级间距（取自 §4.2 的具名值，均落在 8px 网格上） */
+  --sp-head: 96px;      /* 页面顶部留白，移动端 56 */
+  --sp-item: 40px;      /* 列表条目之间，移动端 32 */
+  --sp-para: 26px;      /* 段落之间 ≈1.5em，移动端 24 */
+
+  /* ── 线宽 · 2 档 ─────────────────────────────────────── */
+  --w-line: 1px;
+  --w-quote: 2px;
+
+  /* ── 动效 · 4 组 ─────────────────────────────────────── */
+  --t-fade: 200ms;
+  --t-underline: 220ms;
+  --t-reveal: 400ms;
+  --t-color: 200ms;
+  --e-standard: cubic-bezier(0.2, 0, 0, 1);
+  --e-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --e-back: cubic-bezier(0.34, 1.56, 0.64, 1); /* 轻微过冲，用于需要一点弹性的小元素 */
+
+  /* ── 版心与栅格 ───────────────────────────────────────── */
+  --w-page: 720px;      /* 内容列宽 */
+  --w-about: 640px;     /* 关于页正文收窄 */
+  --w-date: 80px;       /* 列表日期列 */
+  --g-col: 16px;        /* 日期列与正文列之间 */
+  --pad-page: 48px;     /* 页面左右边距 */
+
+  /* ── 质感 ─────────────────────────────────────────────── */
+  --grain-opacity: 0.035; /* 封面噪点强度，深色下略加 */
+
+  color-scheme: light;
+
+  /* 断点（供查阅，媒体查询里写死数值）：
+     ≥1024px 桌面版心居中 · 640–1023px 平板 · <640px 手机 */
+}
+
+/* ── 深色：同一套变量的夜间取值 ─────────────────────────
+   只换 9 个色彩变量 + 颗粒强度，字号/间距/行高全部复用。
+   不是简单反色：底色取纸的阴影面（暖黑），强调色提亮，
+   保证正文对比度 ≥ 14:1、次要文字 ≥ 4.5:1。 */
+:root[data-theme="dark"] {
+  --c-paper: #171614;
+  --c-ink: #E8E5DE;
+  --c-gray-700: #A6A096;
+  --c-gray-400: #857F75;
+  --c-line: #2E2C28;
+  --c-paper-tint: #201F1C;
+  --c-terracotta: #D48A6F;
+  --c-terracotta-soft: #A9705C;
+  --c-selection: rgba(212, 138, 111, 0.14);
+  --grain-opacity: 0.05;
+
+  color-scheme: dark;
+}
+
+/* 手机：字号整体下调一档，日期列并入标题上方 */
+@media (max-width: 639px) {
+  :root {
+    --fs-display: 24px;
+    --fs-h1: 28px;
+    --fs-h2: 21px;
+    --fs-h3: 18px;
+    --fs-list: 19px;
+    --fs-quote: 18px;
+    --fs-body: 16.5px;
+    --fs-lead: 14.5px;
+    --fs-meta: 12.5px;
+    --fs-tag: 12px;
+
+    --lh-h1: 1.40;
+    --lh-h2: 1.55;
+    --lh-body: 1.85;
+
+    --sp-head: 56px;
+    --sp-item: 32px;
+    --sp-para: 24px;
+    --pad-page: 24px;
+  }
+}
